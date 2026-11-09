@@ -39,7 +39,6 @@
   <nav class="fixed top-0 left-0 right-0 z-50 bg-[#08080a]/80 backdrop-blur-md border-b border-white/10 px-6 py-4 flex justify-between items-center">
     <div class="text-xl font-bold text-gradient tracking-wider">AHS CREATIONS</div>
     <div class="flex items-center gap-4">
-      <button onclick="toggleLanguage()" id="langBtn" class="px-3 py-1 text-xs border border-white/20 rounded-full hover:bg-white/10 transition">EN / বাংলা</button>
       <button onclick="openAdminModal()" class="text-gray-400 hover:text-blue-400 transition" title="অ্যাডমিন ড্যাশবোর্ড">
         <i class="fa-solid fa-lock text-lg"></i>
       </button>
@@ -49,34 +48,36 @@
   <!-- Hero Section -->
   <section class="pt-36 pb-20 px-6 max-w-5xl mx-auto text-center">
     <div class="inline-block px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-sm mb-6">
-      <span id="heroBadge">স্বাগতম আমার অফিসিয়াল পোর্টালে</span>
+      <span>স্বাগতম আমার অফিসিয়াল পোর্টালে</span>
     </div>
-    <h1 class="text-4xl md:text-6xl font-extrabold mb-4" id="displayHeroName">আবরারুল হক সিয়াম</h1>
-    <p class="text-lg md:text-2xl text-blue-400 font-medium mb-6" id="displayHeroTitles">ক্লাস ১০ এর শিক্ষার্থী | গ্রাফিক ডিজাইনার | ডিবেটার | মোটিভেশনাল স্পিকার | ড্রিমার</p>
-    <p class="text-gray-400 max-w-2xl mx-auto mb-8 text-base md:text-lg" id="displayHeroBio">
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-4">আবরারুল হক সিয়াম</h1>
+    <p class="text-lg md:text-2xl text-blue-400 font-medium mb-6">ক্লাস ১০ এর শিক্ষার্থী | গ্রাফিক ডিজাইনার | ডিবেটার | মোটিভেশনাল স্পিকার | ড্রিমার</p>
+    <p class="text-gray-400 max-w-2xl mx-auto mb-8 text-base md:text-lg">
       আমি আবরারুল হক সিয়াম। নতুন কিছু সৃষ্টি করা এবং নিজের চিন্তা দিয়ে বিশ্বকে অনুপ্রাণিত করাই আমার মূল লক্ষ্য।
     </p>
     <div class="flex flex-wrap justify-center gap-4">
       <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-full transition shadow-lg shadow-blue-600/30">যোগাযোগ করুন</a>
-      <a href="#portfolio" class="glass-card hover:bg-white/10 font-semibold px-8 py-3 rounded-full transition">আমার কাজসমূহ</a>
+      <a href="#about" class="glass-card hover:bg-white/10 font-semibold px-8 py-3 rounded-full transition">আমার পরিচিতি</a>
     </div>
   </section>
 
   <!-- Profile & Gallery Section -->
-  <section class="py-16 px-6 max-w-6xl mx-auto">
+  <section id="about" class="py-16 px-6 max-w-6xl mx-auto">
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <div class="space-y-4">
-        <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
-          <img id="mainImageDisplay" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Abrarul Haque Siam" class="w-full h-[450px] object-cover transition duration-500 group-hover:scale-105">
+        <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black/40 flex items-center justify-center min-h-[350px]">
+          <img id="mainImageDisplay" src="" alt="Abrarul Haque Siam" class="w-full h-[450px] object-cover hidden">
+          <div id="noImgPlaceholder" class="text-center p-8 text-gray-500">
+            <i class="fa-solid fa-image text-4xl mb-3"></i>
+            <p class="text-sm">এখনো কোনো ছবি যুক্ত করা হয়নি।<br>অ্যাডমিন প্যানেল থেকে ছবি আপলোড করুন।</p>
+          </div>
         </div>
         <!-- Thumbnails Gallery -->
-        <div id="galleryThumbnails" class="flex gap-3 overflow-x-auto pb-2">
-          <!-- Gallery photos loaded dynamically -->
-        </div>
+        <div id="galleryThumbnails" class="flex gap-3 overflow-x-auto pb-2"></div>
       </div>
       <div>
-        <h2 class="text-3xl font-bold mb-4" id="aboutHeading">আমার পরিচয়</h2>
-        <p class="text-gray-300 leading-relaxed mb-6" id="displayAboutDetails">
+        <h2 class="text-3xl font-bold mb-4">আমার পরিচয়</h2>
+        <p class="text-gray-300 leading-relaxed mb-6">
           আমি আবরারুল হক সিয়াম। বর্তমানে ১০ম শ্রেণীতে পড়াশোনা করছি। ছোটবেলা থেকেই ভিজ্যুয়াল আর্টস, ডিজাইন এবং পাবলিক স্পিকিং-এর প্রতি আমার গভীর আগ্রহ। বিভিন্ন বিতর্ক প্রতিযোগিতা এবং মোটিভেশনাল সেশনের মাধ্যমে আমি প্রতিনিয়ত নিজেকে নতুনভাবে প্রকাশ করার চেষ্টা করি।
         </p>
         
@@ -95,14 +96,6 @@
           </p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Portfolio Works -->
-  <section id="portfolio" class="py-16 px-6 max-w-6xl mx-auto">
-    <h2 class="text-3xl font-bold mb-8 text-center" id="portfolioTitle">আমার ক্রিয়েটিভ কাজসমূহ</h2>
-    <div id="portfolioGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Portfolio Cards Dynamic -->
     </div>
   </section>
 
@@ -138,7 +131,7 @@
       <!-- Login View -->
       <div id="adminLoginForm" class="space-y-4">
         <p class="text-sm text-gray-400">ড্যাশবোর্ডে প্রবেশ করতে সিকিউরিটি পাসওয়ার্ড দিন:</p>
-        <input type="password" id="adminPasswordInput" placeholder="পাসওয়ার্ড দিন (ডিফল্ট: admin123)" class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:border-blue-500">
+        <input type="password" id="adminPasswordInput" placeholder="পাসওয়ার্ড (ডিফল্ট: admin123)" class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:border-blue-500">
         <button onclick="processLogin()" class="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-xl font-semibold transition">লগইন করুন</button>
       </div>
 
@@ -164,9 +157,9 @@
 
         <!-- Direct File Upload Section -->
         <div class="space-y-3 border-t border-white/10 pt-4">
-          <h4 class="font-bold text-sm text-blue-400">গ্যালারি থেকে সরাসরি ছবি আপলোড</h4>
-          <p class="text-xs text-gray-400">আপনার মোবাইল/কম্পিউটার থেকে ছবি সিলেক্ট করুন:</p>
-          <input type="file" id="directFileInput" accept="image/*" class="w-full text-xs text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700">
+          <h4 class="font-bold text-sm text-blue-400">গ্যালারি থেকে আপনার ছবি আপলোড</h4>
+          <p class="text-xs text-gray-400">মোবাইল/কম্পিউটার থেকে ছবি নির্বাচন করুন:</p>
+          <input type="file" id="directFileInput" accept="image/*" class="w-full text-xs text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer">
         </div>
 
         <button onclick="saveAdminChanges()" class="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-xl font-semibold transition">সব পরিবর্তন সেভ করুন</button>
@@ -175,16 +168,13 @@
   </div>
 
   <script>
-    // State management
+    // Initial state with empty photos array
     let state = {
       phone: "+880 1700-000000",
       email: "siam@example.com",
-      photos: [
-        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80"
-      ]
+      photos: []
     };
 
-    // Load state from local storage
     function loadState() {
       const saved = localStorage.getItem('ahs_portfolio_data');
       if (saved) {
@@ -193,36 +183,44 @@
       render();
     }
 
-    // Save state
     function saveState() {
       localStorage.setItem('ahs_portfolio_data', JSON.stringify(state));
       render();
     }
 
-    // Render UI
     function render() {
       document.getElementById('displayPhone').innerText = state.phone;
       document.getElementById('displayEmail').innerText = state.email;
       document.getElementById('btnMail').href = `mailto:${state.email}`;
       document.getElementById('btnWhatsapp').href = `https://wa.me/${state.phone.replace(/[^0-9]/g, '')}`;
       
+      const mainImg = document.getElementById('mainImageDisplay');
+      const placeholder = document.getElementById('noImgPlaceholder');
+      const thumbContainer = document.getElementById('galleryThumbnails');
+
       if(state.photos.length > 0) {
-        document.getElementById('mainImageDisplay').src = state.photos[0];
+        mainImg.src = state.photos[0];
+        mainImg.classList.remove('hidden');
+        placeholder.classList.add('hidden');
+      } else {
+        mainImg.classList.add('hidden');
+        placeholder.classList.remove('hidden');
       }
 
-      // Thumbnails
-      const thumbContainer = document.getElementById('galleryThumbnails');
       thumbContainer.innerHTML = '';
-      state.photos.forEach((src, idx) => {
+      state.photos.forEach((src) => {
         const img = document.createElement('img');
         img.src = src;
         img.className = 'w-16 h-16 object-cover rounded-lg border border-white/20 cursor-pointer hover:opacity-80 transition flex-shrink-0';
-        img.onclick = () => document.getElementById('mainImageDisplay').src = src;
+        img.onclick = () => {
+          mainImg.src = src;
+          mainImg.classList.remove('hidden');
+          placeholder.classList.add('hidden');
+        };
         thumbContainer.appendChild(img);
       });
     }
 
-    // Admin Modal Logic
     function openAdminModal() { document.getElementById('adminModal').classList.remove('hidden'); }
     function closeAdminModal() { document.getElementById('adminModal').classList.add('hidden'); }
     
@@ -244,13 +242,13 @@
       document.getElementById('adminPasswordInput').value = '';
     }
 
-    // Direct Gallery File Upload Reader
     document.getElementById('directFileInput').addEventListener('change', function(e) {
       const file = e.target.files[0];
       if (file) {
         const reader = new FileReader();
         reader.onload = function(evt) {
           state.photos.unshift(evt.target.result);
+          saveState();
           alert('ছবি সফলভাবে আপলোড হয়েছে!');
         };
         reader.readAsDataURL(file);
