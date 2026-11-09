@@ -1,269 +1,455 @@
 <!DOCTYPE html>
-<html lang="bn" class="dark scroll-smooth">
-<head><meta name="google-site-verification" content="LdyxknYXbkWIzgJAeW3haFSEhd6Z3oRtRxuOkdYkZ74" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="siteTitle">AHS CREATIONS — আবরারুল হক ছিয়াম</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Hind Siliguri"', '"Plus Jakarta Sans"', 'sans-serif'],
-          },
-          colors: {
-            brand: {
-              bg: '#08080a',
-              card: '#121216',
-              accent: '#3b82f6',
-              border: 'rgba(255, 255, 255, 0.08)'
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMSC Debate Club, Bogura</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0f172a',
+                            900: '#090d16',
+                            950: '#030712',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Hind Siliguri', 'sans-serif'],
+                    }
+                }
             }
-          }
         }
-      }
-    }
-  </script>
-  <style>
-    body { background-color: #08080a; color: #f3f4f6; font-family: 'Hind Siliguri', sans-serif; }
-    .glass-card { background: rgba(18, 18, 22, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
-    .text-gradient { background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #93c5fd 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  </style>
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', 'Hind Siliguri', sans-serif;
+            background-color: #090d16;
+            color: #f3f4f6;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #b45309 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border-glow {
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.25);
+        }
+        .gold-border-glow:hover {
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.45);
+        }
+    </style>
 </head>
-<body class="bg-[#08080a] text-gray-100 min-h-screen">
+<body class="min-h-screen flex flex-col justify-between selection:bg-gold-500 selection:text-navy-950">
 
-  <!-- Header Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#08080a]/80 backdrop-blur-md border-b border-white/10 px-6 py-4 flex justify-between items-center">
-    <div class="text-xl font-bold text-gradient tracking-wider">AHS CREATIONS</div>
-    <div class="flex items-center gap-4">
-      <button onclick="openAdminModal()" class="text-gray-400 hover:text-blue-400 transition" title="অ্যাডমিন ড্যাশবোর্ড">
-        <i class="fa-solid fa-lock text-lg"></i>
-      </button>
-    </div>
-  </nav>
+    <!-- Navbar -->
+    <header class="sticky top-0 z-40 bg-navy-900/90 backdrop-blur-md border-b border-gold-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand & Logo -->
+            <div class="flex items-center gap-3">
+                <div id="nav-logo-container" class="w-12 h-12 rounded-full overflow-hidden border-2 border-gold-500 flex items-center justify-center bg-navy-800 shadow-lg">
+                    <img id="app-logo" src="https://placehold.co/150x150/0f172a/f59e0b?text=BMSC+DC" alt="BMSC Logo" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-lg sm:text-xl text-white tracking-wide">BMSC DEBATE CLUB</h1>
+                    <p class="text-xs text-gold-400 font-medium">BIAM Model School & College, Bogura</p>
+                </div>
+            </div>
 
-  <!-- Hero Section -->
-  <section class="pt-36 pb-20 px-6 max-w-5xl mx-auto text-center">
-    <div class="inline-block px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-sm mb-6">
-      <span>স্বাগতম আমার অফিসিয়াল পোর্টালে</span>
-    </div>
-    <h1 class="text-4xl md:text-6xl font-extrabold mb-4">আবরারুল হক ছিয়াম</h1>
-    <p class="text-lg md:text-2xl text-blue-400 font-medium mb-6">ক্লাস ১০ এর শিক্ষার্থী | গ্রাফিক ডিজাইনার | ডিবেটার | মোটিভেশনাল স্পিকার | ড্রিমার</p>
-    <p class="text-gray-400 max-w-2xl mx-auto mb-8 text-base md:text-lg">
-      আমি আবরারুল হক ছিয়াম। নতুন কিছু সৃষ্টি করা এবং নিজের চিন্তা দিয়ে বিশ্বকে অনুপ্রাণিত করাই আমার মূল লক্ষ্য।
-    </p>
-    <div class="flex flex-wrap justify-center gap-4">
-      <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-full transition shadow-lg shadow-blue-600/30">যোগাযোগ করুন</a>
-      <a href="#about" class="glass-card hover:bg-white/10 font-semibold px-8 py-3 rounded-full transition">আমার পরিচিতি</a>
-    </div>
-  </section>
+            <!-- Right Controls -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                <!-- Language Switcher -->
+                <button id="lang-toggle-btn" class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-gold-500/40 bg-navy-800 hover:bg-gold-500/10 text-xs sm:text-sm font-semibold text-gold-400 transition-all">
+                    <i class="fa-solid fa-globe"></i>
+                    <span id="lang-label">English</span>
+                </button>
 
-  <!-- Profile & Gallery Section -->
-  <section id="about" class="py-16 px-6 max-w-6xl mx-auto">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div class="space-y-4">
-        <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black/40 flex items-center justify-center min-h-[350px]">
-          <img id="mainImageDisplay" src="" alt="Abrarul Haque Siam" class="w-full h-[450px] object-cover hidden">
-          <div id="noImgPlaceholder" class="text-center p-8 text-gray-500">
-            <i class="fa-solid fa-image text-4xl mb-3"></i>
-            <p class="text-sm">এখনো কোনো ছবি যুক্ত করা হয়নি।<br>অ্যাডমিন প্যানেল থেকে ছবি আপলোড করুন।</p>
-          </div>
+                <!-- Admin Button -->
+                <button onclick="toggleAdminModal(true)" class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-navy-950 font-bold text-xs sm:text-sm shadow-md transition-all">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <span data-bn="এডমিন সেন্টার" data-en="Admin Center">এডমিন সেন্টার</span>
+                </button>
+            </div>
         </div>
-        <!-- Thumbnails Gallery -->
-        <div id="galleryThumbnails" class="flex gap-3 overflow-x-auto pb-2"></div>
-      </div>
-      <div>
-        <h2 class="text-3xl font-bold mb-4">আমার পরিচয়</h2>
-        <p class="text-gray-300 leading-relaxed mb-6">
-          আমি আবরারুল হক ছিয়াম। বর্তমানে ১০ম শ্রেণীতে পড়াশোনা করছি। ছোটবেলা থেকেই ভিজ্যুয়াল আর্টস, ডিজাইন এবং পাবলিক স্পিকিং-এর প্রতি আমার গভীর আগ্রহ। বিভিন্ন বিতর্ক প্রতিযোগিতা এবং মোটিভেশনাল সেশনের মাধ্যমে আমি প্রতিনিয়ত নিজেকে নতুনভাবে প্রকাশ করার চেষ্টা করি।
-        </p>
-        
-        <div class="space-y-3 glass-card p-6 rounded-xl border border-white/10">
-          <p class="flex items-center gap-3 text-gray-300">
-            <i class="fa-solid fa-envelope text-blue-400 text-lg w-6"></i>
-            <span id="displayEmail">siam@example.com</span>
-          </p>
-          <p class="flex items-center gap-3 text-gray-300">
-            <i class="fa-solid fa-phone text-blue-400 text-lg w-6"></i>
-            <span id="displayPhone">+880 1700-000000</span>
-          </p>
-          <p class="flex items-center gap-3 text-gray-300">
-            <i class="fa-solid fa-graduation-cap text-blue-400 text-lg w-6"></i>
-            <span>Class 10 Student</span>
-          </p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-navy-900 via-navy-800 to-navy-900 border-b border-white/5">
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <span class="inline-block px-4 py-1.5 mb-6 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs sm:text-sm font-bold tracking-wider uppercase">
+                    <i class="fa-solid fa-microphone-lines mr-1.5"></i>
+                    <span data-bn="যুক্তির আলোয় মুক্তচিন্তা" data-en="Reasoning & Eloquence">যুক্তির আলোয় মুক্তচিন্তা</span>
+                </span>
+                
+                <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+                    <span data-bn="বিয়াম মডেল স্কুল ও কলেজ" data-en="BIAM Model School & College">বিয়াম মডেল স্কুল ও কলেজ</span> <br>
+                    <span class="gold-gradient-text">ডিবেট ক্লাব, বগুড়া</span>
+                </h2>
+                
+                <p class="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8" 
+                   data-bn="বগুড়ার অন্যতম শীর্ষস্থানীয় শিক্ষাপ্রতিষ্ঠান বিয়াম মডেল স্কুল ও কলেজের বিতার্কিকদের প্ল্যাটফর্ম। যুক্তির শাণিত শরে সত্য অনুসন্ধানে এবং শিক্ষার্থীদের মেধা ও বাকপটুতা বিকাশে আমরা প্রতিশ্রুতিবদ্ধ।"
+                   data-en="The premier platform for debaters at BIAM Model School & College, Bogura. We are dedicated to fostering critical thinking, eloquence, and logical reasoning among future leaders.">
+                    বগুড়ার অন্যতম শীর্ষস্থানীয় শিক্ষাপ্রতিষ্ঠান বিয়াম মডেল স্কুল ও কলেজের বিতার্কিকদের প্ল্যাটফর্ম। যুক্তির শাণিত শরে সত্য অনুসন্ধানে এবং শিক্ষার্থীদের মেধা ও বাকপটুতা বিকাশে আমরা প্রতিশ্রুতিবদ্ধ।
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#about" class="px-6 py-3 rounded-xl bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold text-sm sm:text-base shadow-lg transition-all flex items-center gap-2">
+                        <span data-bn="ক্লাব সম্পর্কে জানুন" data-en="Learn More">ক্লাব সম্পর্কে জানুন</span>
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+                    <a href="#gallery" class="px-6 py-3 rounded-xl bg-navy-800 hover:bg-navy-800/80 border border-gold-500/30 text-gold-400 font-bold text-sm sm:text-base transition-all flex items-center gap-2">
+                        <i class="fa-regular fa-images"></i>
+                        <span data-bn="ফটো গ্যালারি" data-en="Photo Gallery">ফটো গ্যালারি</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h3 class="text-2xl sm:text-4xl font-bold text-white mb-3" data-bn="আমাদের মূল লক্ষ্য ও কার্যক্রম" data-en="Our Mission & Activities">আমাদের মূল লক্ষ্য ও কার্যক্রম</h3>
+                <div class="w-20 h-1 bg-gold-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-navy-800/60 border border-gold-500/20 rounded-2xl p-6 hover:border-gold-500/50 transition-all gold-border-glow">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-xl mb-4">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2" data-bn="পাবলিক স্পিকিং ও যুক্তিচর্চা" data-en="Public Speaking & Logic">পাবলিক স্পিকিং ও যুক্তিচর্চা</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-bn="শিক্ষার্থীদের মধ্যে মুক্তবুদ্ধির চর্চা, বস্তুনিষ্ঠ বিশ্লেষণ এবং সাবলীলভাবে নিজস্ব মতামত উপস্থাপনের দক্ষতা গড়ে তোলা।" data-en="Enhancing students' abilities to analyze topics critically, build structured arguments, and speak confidently in public.">
+                        শিক্ষার্থীদের মধ্যে মুক্তবুদ্ধির চর্চা, বস্তুনিষ্ঠ বিশ্লেষণ এবং সাবলীলভাবে নিজস্ব মতামত উপস্থাপনের দক্ষতা গড়ে তোলা।
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-navy-800/60 border border-gold-500/20 rounded-2xl p-6 hover:border-gold-500/50 transition-all gold-border-glow">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-xl mb-4">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2" data-bn="প্রতিযোগিতায় অংশগ্রহণ ও সাফল্য" data-en="Competitions & Success">প্রতিযোগিতায় অংশগ্রহণ ও সাফল্য</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-bn="বগুড়া জেলা, বিভাগীয় এবং জাতীয় পর্যায়ের বিভিন্ন বিতর্ক প্রতিযোগিতায় বিএমএসসি ডিবেট ক্লাব নিয়মিত রানার্সআপ ও চ্যাম্পিয়ন হওয়ার গৌরব অর্জন করে আসছে।" data-en="BMSC debaters consistently secure top positions, championships, and runner-up trophies across district and national tournaments.">
+                        বগুড়া জেলা, বিভাগীয় এবং জাতীয় পর্যায়ের বিভিন্ন বিতর্ক প্রতিযোগিতায় বিএমএসসি ডিবেট ক্লাব নিয়মিত রানার্সআপ ও চ্যাম্পিয়ন হওয়ার গৌরব অর্জন করে আসছে।
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-navy-800/60 border border-gold-500/20 rounded-2xl p-6 hover:border-gold-500/50 transition-all gold-border-glow">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-xl mb-4">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2" data-bn="ওয়ার্কশপ ও বিজ্ঞান মেলা বিতর্ক" data-en="Workshops & Event Debates">ওয়ার্কশপ ও বিজ্ঞান মেলা বিতর্ক</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-bn="নতুন বিতার্কিকদের জন্য প্রতি মাসে বিশেষ প্রশিক্ষণ কর্মশালা এবং প্রতিষ্ঠানের বার্ষিক বিজ্ঞান মেলায় আকর্ষণীয় প্রদর্শনী বিতর্কের আয়োজন করা হয়।" data-en="Organizing monthly debate training workshops for freshers and hosting show debates during annual science fairs and festivals.">
+                        নতুন বিতার্কিকদের জন্য প্রতি মাসে বিশেষ প্রশিক্ষণ কর্মশালা এবং প্রতিষ্ঠানের বার্ষিক বিজ্ঞান মেলায় আকর্ষণীয় প্রদর্শনী বিতর্কের আয়োজন করা হয়।
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photo Gallery Section -->
+        <section id="gallery" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-navy-900/50 rounded-3xl border border-white/5 my-8">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+                <div>
+                    <h3 class="text-2xl sm:text-4xl font-bold text-white mb-2" data-bn="গ্যালারি ও স্মরণীয় মুহূর্ত" data-en="Photo Gallery & Moments">গ্যালারি ও স্মরণীয় মুহূর্ত</h3>
+                    <p class="text-gray-400 text-sm" data-bn="ক্লাবের বিভিন্ন প্রতিযোগিতা ও ইভেন্টের আলোকচিত্র" data-en="Highlights from our competitions, workshops, and achievements.">ক্লাবের বিভিন্ন প্রতিযোগিতা ও ইভেন্টের আলোকচিত্র</p>
+                </div>
+                <button onclick="toggleAdminModal(true)" class="self-start sm:self-auto px-4 py-2 rounded-lg bg-navy-800 border border-gold-500/40 text-gold-400 text-xs font-semibold hover:bg-gold-500/10 transition-all">
+                    <i class="fa-solid fa-upload mr-1.5"></i>
+                    <span data-bn="ছবি পরিবর্তন করুন" data-en="Change Photos">ছবি পরিবর্তন করুন</span>
+                </button>
+            </div>
+
+            <!-- Gallery Grid (3 Main Images) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Photo 1 -->
+                <div class="group relative bg-navy-800 rounded-2xl overflow-hidden border border-gold-500/20 hover:border-gold-500/60 transition-all shadow-lg">
+                    <div class="h-64 sm:h-72 overflow-hidden bg-navy-950">
+                        <img id="img-gallery-1" src="https://placehold.co/800x600/0f172a/f59e0b?text=Debate+Competition+1" alt="Gallery Photo 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-4 bg-navy-800/90 border-t border-white/5">
+                        <h4 class="font-bold text-white text-base mb-1" data-bn="জেলা পর্যায় বিতর্ক প্রতিযোগিতা" data-en="District Debate Championship">জেলা পর্যায় বিতর্ক প্রতিযোগিতা</h4>
+                        <p class="text-xs text-gold-400" data-bn="বগুড়া জেলা বিতর্ক উৎসব" data-en="Bogura District Debate Fest">বগুড়া জেলা বিতর্ক উৎসব</p>
+                    </div>
+                </div>
+
+                <!-- Photo 2 -->
+                <div class="group relative bg-navy-800 rounded-2xl overflow-hidden border border-gold-500/20 hover:border-gold-500/60 transition-all shadow-lg">
+                    <div class="h-64 sm:h-72 overflow-hidden bg-navy-950">
+                        <img id="img-gallery-2" src="https://placehold.co/800x600/0f172a/f59e0b?text=Science+Fair+Debate" alt="Gallery Photo 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-4 bg-navy-800/90 border-t border-white/5">
+                        <h4 class="font-bold text-white text-base mb-1" data-bn="বিজ্ঞান মেলা বিশেষ বিতর্ক" data-en="Science Fair Exhibition Debate">বিজ্ঞান মেলা বিশেষ বিতর্ক</h4>
+                        <p class="text-xs text-gold-400" data-bn="বিয়াম মডেল স্কুল ও কলেজ ক্যাম্পাস" data-en="BIAM Model School Campus">বিয়াম মডেল স্কুল ও কলেজ ক্যাম্পাস</p>
+                    </div>
+                </div>
+
+                <!-- Photo 3 -->
+                <div class="group relative bg-navy-800 rounded-2xl overflow-hidden border border-gold-500/20 hover:border-gold-500/60 transition-all shadow-lg">
+                    <div class="h-64 sm:h-72 overflow-hidden bg-navy-950">
+                        <img id="img-gallery-3" src="https://placehold.co/800x600/0f172a/f59e0b?text=Club+Workshop" alt="Gallery Photo 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-4 bg-navy-800/90 border-t border-white/5">
+                        <h4 class="font-bold text-white text-base mb-1" data-bn="বিতার্কিকদের প্রশিক্ষণ কর্মশালা" data-en="Debaters Skill Workshop">বিতার্কিকদের প্রশিক্ষণ কর্মশালা</h4>
+                        <p class="text-xs text-gold-400" data-bn="পাবলিক স্পিকিং ও যুক্তি সেশন" data-en="Public Speaking Session">পাবলিক স্পিকিং ও যুক্তি সেশন</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-950 border-t border-gold-500/20 py-8 px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-400">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-building-columns text-gold-500"></i>
+                <span class="font-semibold text-white">BMSC DEBATE CLUB, BOGURA</span>
+            </div>
+            <p data-bn="© বিয়াম মডেল স্কুল ও কলেজ বিতর্ক ক্লাব, বগুড়া। সর্বস্বত্ব সংরক্ষিত।" data-en="© BIAM Model School & College Debate Club, Bogura. All rights reserved.">
+                © বিয়াম মডেল স্কুল ও কলেজ বিতর্ক ক্লাব, বগুড়া। সর্বস্বত্ব সংরক্ষিত।
+            </p>
         </div>
-      </div>
+    </footer>
+
+    <!-- Admin Center Modal -->
+    <div id="admin-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/80 backdrop-blur-md hidden">
+        <div class="bg-navy-900 border border-gold-500/40 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <!-- Modal Header -->
+            <div class="px-6 py-4 border-b border-gold-500/20 flex items-center justify-between bg-navy-800">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg bg-gold-500/20 text-gold-400 flex items-center justify-center">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-lg" data-bn="এডমিন সেন্টার - ইমেজ ম্যানেজার" data-en="Admin Center - Image Manager">এডমিন সেন্টার - ইমেজ ম্যানেজার</h3>
+                        <p class="text-xs text-gold-400" data-bn="সব ডিভাইসে স্থায়ীভাবে ছবি প্রদর্শনের জন্য নির্দেশিকা" data-en="Device-wide persistent image manager">সব ডিভাইসে স্থায়ীভাবে ছবি প্রদর্শনের জন্য নির্দেশিকা</p>
+                    </div>
+                </div>
+                <button onclick="toggleAdminModal(false)" class="text-gray-400 hover:text-white p-2 text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 overflow-y-auto space-y-6">
+                
+                <!-- Important Instructions Box -->
+                <div class="bg-gold-500/10 border border-gold-500/30 rounded-xl p-4 text-xs sm:text-sm text-gray-200 leading-relaxed">
+                    <h4 class="font-bold text-gold-400 flex items-center gap-2 mb-2 text-sm">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span data-bn="ছবি সব ফোনে যেভাবে সঠিক উপায়ে দেখাবে (Instructions)" data-en="How to make photos visible on all phones">ছবি সব ফোনে যেভাবে সঠিক উপায়ে দেখাবে (Instructions)</span>
+                    </h4>
+                    <ol class="list-decimal list-inside space-y-1.5 text-gray-300">
+                        <li data-bn="<b>ফাইল আপলোড পদ্ধতি:</b> নিচে থাকা 'ফাইল সিলেক্ট করুন' বাটনে ক্লিক করে সরাসরি মোবাইল বা কম্পিউটার থেকে ছবি সিলেক্ট করুন। সিস্টেমটি ছবিকে স্বয়ংক্রিয়ভাবে <b>Base64 Data URL</b> এ রূপান্তর করে সংরক্ষিত করবে।" data-en="<b>Direct File Upload:</b> Select an image file directly from your mobile/PC. The site converts it into a Base64 Data URL so it loads across devices seamlessly.">
+                            <b>ফাইল আপলোড পদ্ধতি:</b> নিচে থাকা 'ফাইল সিলেক্ট করুন' বাটনে ক্লিক করে সরাসরি মোবাইল বা কম্পিউটার থেকে ছবি সিলেক্ট করুন। সিস্টেমটি ছবিকে স্বয়ংক্রিয়ভাবে <b>Base64 Data URL</b> এ রূপান্তর করে সংরক্ষিত করবে।
+                        </li>
+                        <li data-bn="<b>অনলাইন ইউআরএল পদ্ধতি:</b> যদি ছবির কোনো পাবলিক লিঙ্ক থাকে (যেমন Imgur, PostImages), তবে নিচে ছবির URL পেস্ট করেও সেভ করতে পারেন।" data-en="<b>Online URL Option:</b> You can also paste public image URLs directly.">
+                            <b>অনলাইন ইউআরএল পদ্ধতি:</b> যদি ছবির কোনো পাবলিক লিঙ্ক থাকে (যেমন Imgur, PostImages), তবে নিচে ছবির URL পেস্ট করেও সেভ করতে পারেন।
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- Admin Controls -->
+                <div class="space-y-4">
+                    <!-- 1. Club Logo -->
+                    <div class="bg-navy-800/70 p-4 rounded-xl border border-white/5 space-y-3">
+                        <label class="block font-semibold text-sm text-gold-400" data-bn="১. ক্লাবের লোগো (Club Logo)" data-en="1. Club Logo">১. ক্লাবের লোগো (Club Logo)</label>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <input type="file" id="input-logo-file" accept="image/*" class="block w-full text-xs text-gray-400 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gold-500 file:text-navy-950 hover:file:bg-gold-400 cursor-pointer">
+                            <input type="text" id="input-logo-url" placeholder="অথবা ইমেজ URL দিন (https://...)" class="flex-grow bg-navy-950 border border-gray-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-gold-500">
+                        </div>
+                    </div>
+
+                    <!-- 2. Gallery Image 1 -->
+                    <div class="bg-navy-800/70 p-4 rounded-xl border border-white/5 space-y-3">
+                        <label class="block font-semibold text-sm text-gold-400" data-bn="২. গ্যালারি ছবি ১ (Gallery Image 1)" data-en="2. Gallery Image 1">২. গ্যালারি ছবি ১ (Gallery Image 1)</label>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <input type="file" id="input-gal1-file" accept="image/*" class="block w-full text-xs text-gray-400 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gold-500 file:text-navy-950 hover:file:bg-gold-400 cursor-pointer">
+                            <input type="text" id="input-gal1-url" placeholder="অথবা ইমেজ URL দিন (https://...)" class="flex-grow bg-navy-950 border border-gray-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-gold-500">
+                        </div>
+                    </div>
+
+                    <!-- 3. Gallery Image 2 -->
+                    <div class="bg-navy-800/70 p-4 rounded-xl border border-white/5 space-y-3">
+                        <label class="block font-semibold text-sm text-gold-400" data-bn="৩. গ্যালারি ছবি ২ (Gallery Image 2)" data-en="3. Gallery Image 2">৩. গ্যালারি ছবি ২ (Gallery Image 2)</label>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <input type="file" id="input-gal2-file" accept="image/*" class="block w-full text-xs text-gray-400 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gold-500 file:text-navy-950 hover:file:bg-gold-400 cursor-pointer">
+                            <input type="text" id="input-gal2-url" placeholder="অথবা ইমেজ URL দিন (https://...)" class="flex-grow bg-navy-950 border border-gray-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-gold-500">
+                        </div>
+                    </div>
+
+                    <!-- 4. Gallery Image 3 -->
+                    <div class="bg-navy-800/70 p-4 rounded-xl border border-white/5 space-y-3">
+                        <label class="block font-semibold text-sm text-gold-400" data-bn="৪. গ্যালারি ছবি ৩ (Gallery Image 3)" data-en="4. Gallery Image 3">৪. গ্যালারি ছবি ৩ (Gallery Image 3)</label>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <input type="file" id="input-gal3-file" accept="image/*" class="block w-full text-xs text-gray-400 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gold-500 file:text-navy-950 hover:file:bg-gold-400 cursor-pointer">
+                            <input type="text" id="input-gal3-url" placeholder="অথবা ইমেজ URL দিন (https://...)" class="flex-grow bg-navy-950 border border-gray-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-gold-500">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="px-6 py-4 border-t border-gold-500/20 bg-navy-800 flex justify-between items-center">
+                <button onclick="resetImages()" class="text-xs text-red-400 hover:text-red-300 font-semibold" data-bn="রিসেট করুন (Reset)" data-en="Reset Default Images">
+                    রিসেট করুন (Reset)
+                </button>
+                <div class="flex gap-3">
+                    <button onclick="toggleAdminModal(false)" class="px-4 py-2 rounded-xl bg-navy-950 hover:bg-navy-900 border border-gray-700 text-xs font-semibold text-gray-300">
+                        <span data-bn="বন্ধ করুন" data-en="Close">বন্ধ করুন</span>
+                    </button>
+                    <button onclick="saveAdminChanges()" class="px-5 py-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-navy-950 font-bold text-xs shadow-md transition-all">
+                        <span data-bn="পরিবর্তন সেভ করুন" data-en="Save Changes">পরিবর্তন সেভ করুন</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-16 px-6 max-w-4xl mx-auto text-center">
-    <div class="glass-card p-8 md:p-12 rounded-3xl">
-      <h2 class="text-3xl font-bold mb-4">যোগাযোগ করুন</h2>
-      <p class="text-gray-400 mb-8">যেকোনো প্রশ্ন, প্রজেক্ট অথবা যোগাযোগের জন্য নিচের মাধ্যমে নক দিতে পারেন</p>
-      <div class="flex justify-center gap-6 text-2xl">
-        <a id="btnWhatsapp" href="#" target="_blank" class="w-12 h-12 rounded-full glass-card flex items-center justify-center hover:bg-green-600/20 text-green-400 transition">
-          <i class="fa-brands fa-whatsapp"></i>
-        </a>
-        <a id="btnMail" href="#" class="w-12 h-12 rounded-full glass-card flex items-center justify-center hover:bg-blue-600/20 text-blue-400 transition">
-          <i class="fa-solid fa-envelope"></i>
-        </a>
-      </div>
-    </div>
-  </section>
+    <!-- JavaScript Logic -->
+    <script>
+        // Language Toggle State
+        let currentLang = 'bn'; // default Bangla
 
-  <!-- Footer -->
-  <footer class="py-8 text-center text-gray-500 text-sm border-t border-white/5">
-    <p>© AHS CREATIONS — আবরারুল হক ছিয়াম। সর্বস্বত্ব সংরক্ষিত।</p>
-  </footer>
+        const langToggleBtn = document.getElementById('lang-toggle-btn');
+        const langLabel = document.getElementById('lang-label');
 
-  <!-- Admin Modal -->
-  <div id="adminModal" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden z-50 flex items-center justify-center p-4">
-    <div class="glass-card bg-[#121216] border border-white/10 rounded-2xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
-      <div class="flex justify-between items-center mb-6">
-        <h3 class="text-xl font-bold text-gradient">অ্যাডমিন কন্ট্রোল প্যানেল</h3>
-        <button onclick="closeAdminModal()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
-      </div>
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'bn' ? 'en' : 'bn';
+            langLabel.textContent = currentLang === 'bn' ? 'English' : 'বাংলা';
+            updateLanguage();
+        });
 
-      <!-- Login View -->
-      <div id="adminLoginForm" class="space-y-4">
-        <p class="text-sm text-gray-400">ড্যাশবোর্ডে প্রবেশ করতে সিকিউরিটি পাসওয়ার্ড দিন:</p>
-        <input type="password" id="adminPasswordInput" placeholder="পাসওয়ার্ড (ডিফল্ট: siam123)" class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:border-blue-500">
-        <button onclick="processLogin()" class="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-xl font-semibold transition">লগইন করুন</button>
-      </div>
+        function updateLanguage() {
+            const translatableElements = document.querySelectorAll('[data-bn][data-en]');
+            translatableElements.forEach(el => {
+                const text = el.getAttribute(`data-${currentLang}`);
+                if (text) {
+                    el.innerHTML = text;
+                }
+            });
+        }
 
-      <!-- Admin Control Panel View -->
-      <div id="adminDashboard" class="hidden space-y-6">
-        <div class="flex justify-between items-center border-b border-white/10 pb-3">
-          <span class="text-green-400 text-sm"><i class="fa-solid fa-circle-check mr-1"></i> এডমিন হিসেবে লগইন আছেন</span>
-          <button onclick="logoutAdmin()" class="text-xs text-red-400 hover:underline">লগআউট</button>
-        </div>
+        // Admin Modal Toggle
+        function toggleAdminModal(show) {
+            const modal = document.getElementById('admin-modal');
+            if (show) {
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
 
-        <!-- Phone & Email Edit -->
-        <div class="space-y-3">
-          <h4 class="font-bold text-sm text-blue-400">ব্যক্তিগত তথ্য পরিবর্তন</h4>
-          <div>
-            <label class="text-xs text-gray-400">ফোন নম্বর</label>
-            <input type="text" id="editPhone" class="w-full bg-black/50 border border-white/10 rounded-lg p-2.5 text-sm text-white">
-          </div>
-          <div>
-            <label class="text-xs text-gray-400">ইমেইল এড্রেস</label>
-            <input type="email" id="editEmail" class="w-full bg-black/50 border border-white/10 rounded-lg p-2.5 text-sm text-white">
-          </div>
-        </div>
+        // Helper: Convert File to Base64 Data URL
+        function readFileAsBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = (error) => reject(error);
+                reader.readAsDataURL(file);
+            });
+        }
 
-        <!-- Direct File Upload Section -->
-        <div class="space-y-3 border-t border-white/10 pt-4">
-          <h4 class="font-bold text-sm text-blue-400">গ্যালারি থেকে আপনার ছবি আপলোড</h4>
-          <p class="text-xs text-gray-400">মোবাইল/কম্পিউটার থেকে ছবি নির্বাচন করুন:</p>
-          <input type="file" id="directFileInput" accept="image/*" class="w-full text-xs text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer">
-        </div>
+        // Save Admin Changes & Store in localStorage
+        async function saveAdminChanges() {
+            try {
+                // 1. Logo
+                const logoFile = document.getElementById('input-logo-file').files[0];
+                const logoUrl = document.getElementById('input-logo-url').value.trim();
+                if (logoFile) {
+                    const base64 = await readFileAsBase64(logoFile);
+                    localStorage.setItem('bmsc_logo', base64);
+                } else if (logoUrl) {
+                    localStorage.setItem('bmsc_logo', logoUrl);
+                }
 
-        <button onclick="saveAdminChanges()" class="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-xl font-semibold transition">সব পরিবর্তন সেভ করুন</button>
-      </div>
-    </div>
-  </div>
+                // 2. Gallery Image 1
+                const gal1File = document.getElementById('input-gal1-file').files[0];
+                const gal1Url = document.getElementById('input-gal1-url').value.trim();
+                if (gal1File) {
+                    const base64 = await readFileAsBase64(gal1File);
+                    localStorage.setItem('bmsc_gal1', base64);
+                } else if (gal1Url) {
+                    localStorage.setItem('bmsc_gal1', gal1Url);
+                }
 
-  <script>
-    // Initial state with empty photos array
-    let state = {
-      phone: "+880 1700-000000",
-      email: "siam@example.com",
-      photos: []
-    };
+                // 3. Gallery Image 2
+                const gal2File = document.getElementById('input-gal2-file').files[0];
+                const gal2Url = document.getElementById('input-gal2-url').value.trim();
+                if (gal2File) {
+                    const base64 = await readFileAsBase64(gal2File);
+                    localStorage.setItem('bmsc_gal2', base64);
+                } else if (gal2Url) {
+                    localStorage.setItem('bmsc_gal2', gal2Url);
+                }
 
-    function loadState() {
-      const saved = localStorage.getItem('ahs_portfolio_data');
-      if (saved) {
-        state = JSON.parse(saved);
-      }
-      render();
-    }
+                // 4. Gallery Image 3
+                const gal3File = document.getElementById('input-gal3-file').files[0];
+                const gal3Url = document.getElementById('input-gal3-url').value.trim();
+                if (gal3File) {
+                    const base64 = await readFileAsBase64(gal3File);
+                    localStorage.setItem('bmsc_gal3', base64);
+                } else if (gal3Url) {
+                    localStorage.setItem('bmsc_gal3', gal3Url);
+                }
 
-    function saveState() {
-      localStorage.setItem('ahs_portfolio_data', JSON.stringify(state));
-      render();
-    }
+                // Apply image changes immediately
+                loadSavedImages();
+                toggleAdminModal(false);
 
-    function render() {
-      document.getElementById('displayPhone').innerText = state.phone;
-      document.getElementById('displayEmail').innerText = state.email;
-      document.getElementById('btnMail').href = `mailto:${state.email}`;
-      document.getElementById('btnWhatsapp').href = `https://wa.me/${state.phone.replace(/[^0-9]/g, '')}`;
-      
-      const mainImg = document.getElementById('mainImageDisplay');
-      const placeholder = document.getElementById('noImgPlaceholder');
-      const thumbContainer = document.getElementById('galleryThumbnails');
+            } catch (err) {
+                console.error("Error saving images:", err);
+            }
+        }
 
-      if(state.photos.length > 0) {
-        mainImg.src = state.photos[0];
-        mainImg.classList.remove('hidden');
-        placeholder.classList.add('hidden');
-      } else {
-        mainImg.classList.add('hidden');
-        placeholder.classList.remove('hidden');
-      }
+        // Load Images from Local Storage
+        function loadSavedImages() {
+            const savedLogo = localStorage.getItem('bmsc_logo');
+            const savedGal1 = localStorage.getItem('bmsc_gal1');
+            const savedGal2 = localStorage.getItem('bmsc_gal2');
+            const savedGal3 = localStorage.getItem('bmsc_gal3');
 
-      thumbContainer.innerHTML = '';
-      state.photos.forEach((src) => {
-        const img = document.createElement('img');
-        img.src = src;
-        img.className = 'w-16 h-16 object-cover rounded-lg border border-white/20 cursor-pointer hover:opacity-80 transition flex-shrink-0';
-        img.onclick = () => {
-          mainImg.src = src;
-          mainImg.classList.remove('hidden');
-          placeholder.classList.add('hidden');
-        };
-        thumbContainer.appendChild(img);
-      });
-    }
+            if (savedLogo) document.getElementById('app-logo').src = savedLogo;
+            if (savedGal1) document.getElementById('img-gallery-1').src = savedGal1;
+            if (savedGal2) document.getElementById('img-gallery-2').src = savedGal2;
+            if (savedGal3) document.getElementById('img-gallery-3').src = savedGal3;
+        }
 
-    function openAdminModal() { document.getElementById('adminModal').classList.remove('hidden'); }
-    function closeAdminModal() { document.getElementById('adminModal').classList.add('hidden'); }
-    
-    function processLogin() {
-      const pass = document.getElementById('adminPasswordInput').value;
-      if (pass === 'admin123') {
-        document.getElementById('adminLoginForm').classList.add('hidden');
-        document.getElementById('adminDashboard').classList.remove('hidden');
-        document.getElementById('editPhone').value = state.phone;
-        document.getElementById('editEmail').value = state.email;
-      } else {
-        alert('ভুল পাসওয়ার্ড!');
-      }
-    }
+        // Reset to Default Placeholder Images
+        function resetImages() {
+            localStorage.removeItem('bmsc_logo');
+            localStorage.removeItem('bmsc_gal1');
+            localStorage.removeItem('bmsc_gal2');
+            localStorage.removeItem('bmsc_gal3');
 
-    function logoutAdmin() {
-      document.getElementById('adminLoginForm').classList.remove('hidden');
-      document.getElementById('adminDashboard').classList.add('hidden');
-      document.getElementById('adminPasswordInput').value = '';
-    }
+            document.getElementById('app-logo').src = 'https://placehold.co/150x150/0f172a/f59e0b?text=BMSC+DC';
+            document.getElementById('img-gallery-1').src = 'https://placehold.co/800x600/0f172a/f59e0b?text=Debate+Competition+1';
+            document.getElementById('img-gallery-2').src = 'https://placehold.co/800x600/0f172a/f59e0b?text=Science+Fair+Debate';
+            document.getElementById('img-gallery-3').src = 'https://placehold.co/800x600/0f172a/f59e0b?text=Club+Workshop';
 
-    document.getElementById('directFileInput').addEventListener('change', function(e) {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(evt) {
-          state.photos.unshift(evt.target.result);
-          saveState();
-          alert('ছবি সফলভাবে আপলোড হয়েছে!');
-        };
-        reader.readAsDataURL(file);
-      }
-    });
+            toggleAdminModal(false);
+        }
 
-    function saveAdminChanges() {
-      state.phone = document.getElementById('editPhone').value;
-      state.email = document.getElementById('editEmail').value;
-      saveState();
-      alert('সব তথ্য সফলভাবে আপডেট হয়েছে!');
-      closeAdminModal();
-    }
-
-    window.onload = loadState;
-  </script>
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadSavedImages();
+        });
+    </script>
 </body>
 </html>
