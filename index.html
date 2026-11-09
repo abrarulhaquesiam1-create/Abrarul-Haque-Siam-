@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="dark scroll-smooth">
-<head><meta name="google-site-verification" content="LdyxknYXbkWIzgJAeW3haFSEhd6Z3oRtRxuOkdYkZ74" />
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AHS CREATIONS — Visual & Graphic Design Portfolio | Abrarul Haque Siam</title>
@@ -137,7 +137,12 @@
 
             <!-- Action Buttons -->
             <div class="hidden md:flex items-center gap-4">
-                <a href="#contact" class="px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-brand-border hover:bg-neutral-800 border border-neutral-700 transition-all">
+                <!-- Language Toggle Button -->
+                <button @click="lang = (lang === 'en' ? 'bn' : 'en')" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-neutral-900 border border-brand-border text-neutral-300 hover:text-white transition-all flex items-center gap-1.5">
+                    <i class="fas fa-globe text-accent"></i>
+                    <span x-text="lang === 'en' ? 'বাংলা' : 'EN'"></span>
+                </button>
+                <a href="#contact" class="px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-brand-border hover:bg-neutral-800 border border-neutral-700 transition-all" x-text="lang === 'en' ? 'Let\'s Talk' : 'যোগাযোগ করুন'">
                     Let's Talk
                 </a>
                 <button @click="openAdmin()" class="p-2.5 rounded-full bg-neutral-900 hover:bg-neutral-800 border border-brand-border text-neutral-400 hover:text-white transition-all relative" title="Admin Dashboard Portal">
@@ -154,13 +159,15 @@
 
         <!-- Mobile Navigation Drawer -->
         <div x-show="mobileMenuOpen" x-transition.origin.top class="md:hidden border-b border-brand-border bg-brand-bg px-6 py-6 space-y-4">
-            <a href="#about" @click="mobileMenuOpen = false" class="block text-base font-medium text-neutral-300 hover:text-accent">About</a>
-            <a href="#works" @click="mobileMenuOpen = false" class="block text-base font-medium text-neutral-300 hover:text-accent">Works</a>
-            <a href="#services" @click="mobileMenuOpen = false" class="block text-base font-medium text-neutral-300 hover:text-accent">Services</a>
-            <a href="#experience" @click="mobileMenuOpen = false" class="block text-base font-medium text-neutral-300 hover:text-accent">Timeline</a>
-            <a href="#contact" @click="mobileMenuOpen = false" class="block text-base font-medium text-neutral-300 hover:text-accent">Contact</a>
+            <a href="#about" @click="mobileMenuOpen = false" class="block text-base font-medium text-neutral-300 hover:text-accent" x-text="lang === 'en' ? 'About' : 'আমার সম্পর্কে'">About</a>
+            <a href="#works" @click="mobileMenuOpen = false" class="block text-base font-medium text-neutral-300 hover:text-accent" x-text="lang === 'en' ? 'Works' : 'কাজসমূহ'">Works</a>
+            <a href="#speaking" @click="mobileMenuOpen = false" class="block text-base font-medium text-neutral-300 hover:text-accent" x-text="lang === 'en' ? 'Debate & Speaking' : 'ডিবেট ও স্পিকিং'">Debate & Speaking</a>
+            <a href="#services" @click="mobileMenuOpen = false" class="block text-base font-medium text-neutral-300 hover:text-accent" x-text="lang === 'en' ? 'Services' : 'সার্ভিসসমূহ'">Services</a>
+            <a href="#contact" @click="mobileMenuOpen = false" class="block text-base font-medium text-neutral-300 hover:text-accent" x-text="lang === 'en' ? 'Contact' : 'যোগাযোগ'">Contact</a>
             <div class="pt-4 border-t border-brand-border flex items-center justify-between">
-                <a href="#contact" @click="mobileMenuOpen = false" class="px-6 py-2.5 rounded-full text-xs font-semibold bg-accent text-white uppercase">Let's Talk</a>
+                <button @click="lang = (lang === 'en' ? 'bn' : 'en')" class="px-4 py-2 rounded-lg bg-neutral-900 border border-brand-border text-xs text-neutral-300 font-bold">
+                    <i class="fas fa-globe mr-1 text-accent"></i> <span x-text="lang === 'en' ? 'বাংলা' : 'English'"></span>
+                </button>
                 <button @click="openAdmin(); mobileMenuOpen = false" class="px-4 py-2 rounded-lg bg-neutral-900 border border-brand-border text-xs text-neutral-300">
                     <i class="fas fa-lock mr-2"></i>Admin Login
                 </button>
@@ -180,23 +187,30 @@
             <div class="max-w-5xl mx-auto text-center space-y-8 relative z-10">
                 <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-neutral-900/90 border border-brand-border text-xs tracking-widest text-neutral-400 uppercase">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span x-text="profile.availabilityStatus || 'Available for Freelance & Select Commissions'"></span>
+                    <span x-text="profile.statusTag || 'Class 10 Student • Graphic Designer • Debater • Motivational Speaker'"></span>
                 </div>
 
                 <h1 class="font-syne text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold uppercase editorial-title tracking-tight">
-                    <span class="block text-neutral-400" x-text="heroText.topLine">VISUAL ART &</span>
-                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-200 to-neutral-400" x-text="heroText.mainLine">GRAPHIC DESIGN</span>
+                    <span class="block text-neutral-400" x-text="lang === 'en' ? profile.fullName : profile.fullNameBn"></span>
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-200 to-neutral-400" x-text="heroText.mainLine">CREATIVE VISIONARY</span>
                 </h1>
 
-                <p class="max-w-2xl mx-auto text-lg md:text-xl text-brand-muted font-light leading-relaxed" x-text="profile.shortBio">
+                <!-- Dynamic Roles Badges -->
+                <div class="flex flex-wrap items-center justify-center gap-2 pt-2">
+                    <template x-for="role in profile.roles" :key="role">
+                        <span class="px-3.5 py-1.5 rounded-full bg-neutral-900/80 border border-brand-border text-xs text-neutral-300 font-semibold tracking-wide" x-text="role"></span>
+                    </template>
+                </div>
+
+                <p class="max-w-2xl mx-auto text-lg md:text-xl text-brand-muted font-light leading-relaxed" x-text="lang === 'en' ? profile.shortBio : profile.shortBioBn">
                     Crafting immersive visual identity, editorial poster artwork, and strategic visual media with 4+ years of creative expertise.
                 </p>
 
                 <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
                     <a href="#works" class="px-8 py-4 rounded-full bg-accent hover:bg-neutral-100 text-white hover:text-black font-semibold text-sm tracking-wider uppercase transition-all shadow-lg hover:shadow-accent/20">
-                        Explore Works <i class="fas fa-arrow-down ml-2"></i>
+                        <span x-text="lang === 'en' ? 'Explore Works' : 'কাজসমূহ দেখুন'"></span> <i class="fas fa-arrow-down ml-2"></i>
                     </a>
-                    <a href="#contact" class="px-8 py-4 rounded-full bg-neutral-900 border border-brand-border hover:border-neutral-500 text-neutral-200 font-semibold text-sm tracking-wider uppercase transition-all">
+                    <a href="#contact" class="px-8 py-4 rounded-full bg-neutral-900 border border-brand-border hover:border-neutral-500 text-neutral-200 font-semibold text-sm tracking-wider uppercase transition-all" x-text="lang === 'en' ? 'Get In Touch' : 'যোগাযোগ করুন'">
                         Get In Touch
                     </a>
                 </div>
@@ -205,19 +219,19 @@
                 <div class="pt-16 grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-brand-border/40 max-w-4xl mx-auto">
                     <div>
                         <div class="font-syne text-3xl md:text-4xl font-bold text-white" x-text="profile.yearsExperience + '+'">4+</div>
-                        <div class="text-xs text-brand-muted uppercase tracking-wider mt-1">Years Experience</div>
+                        <div class="text-xs text-brand-muted uppercase tracking-wider mt-1" x-text="lang === 'en' ? 'Years Experience' : 'বছরের অভিজ্ঞতা'">Years Experience</div>
                     </div>
                     <div>
                         <div class="font-syne text-3xl md:text-4xl font-bold text-white" x-text="projects.length">12+</div>
-                        <div class="text-xs text-brand-muted uppercase tracking-wider mt-1">Projects Delivered</div>
+                        <div class="text-xs text-brand-muted uppercase tracking-wider mt-1" x-text="lang === 'en' ? 'Design Projects' : 'ডিজাইন প্রজেক্ট'">Design Projects</div>
                     </div>
                     <div>
-                        <div class="font-syne text-3xl md:text-4xl font-bold text-white">100%</div>
-                        <div class="text-xs text-brand-muted uppercase tracking-wider mt-1">Creative Dedication</div>
+                        <div class="font-syne text-3xl md:text-4xl font-bold text-white">25+</div>
+                        <div class="text-xs text-brand-muted uppercase tracking-wider mt-1" x-text="lang === 'en' ? 'Debates & Speeches' : 'ডিবেট ও বক্তব্য'">Debates & Speeches</div>
                     </div>
                     <div>
-                        <div class="font-syne text-3xl md:text-4xl font-bold text-white">4K</div>
-                        <div class="text-xs text-brand-muted uppercase tracking-wider mt-1">Visual Fidelity</div>
+                        <div class="font-syne text-3xl md:text-4xl font-bold text-white">Class 10</div>
+                        <div class="text-xs text-brand-muted uppercase tracking-wider mt-1" x-text="lang === 'en' ? 'Current Academic Status' : 'বর্তমান শিক্ষাবর্ষ'">Current Academic Status</div>
                     </div>
                 </div>
             </div>
@@ -227,38 +241,47 @@
         <section id="about" class="py-24 px-6 border-b border-brand-border/40 relative">
             <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
-                <!-- Left: Profile Image Frame -->
-                <div class="lg:col-span-5 relative">
+                <!-- Left: Profile Image Frame with Gallery Switcher -->
+                <div class="lg:col-span-5 relative space-y-4">
                     <div class="relative rounded-2xl overflow-hidden border border-brand-border bg-neutral-900 aspect-[4/5] group">
-                        <img :src="profile.photoUrl" 
+                        <img :src="activePhotoUrl || profile.photoUrl" 
                              :alt="profile.fullName" 
-                             class="w-full h-full object-cover img-zoom-hover"
-                             onerror="this.src='https://placehold.co/600x750/121216/ffffff?text=Abrarul+Haque+Siam'">
+                             class="w-full h-full object-cover img-zoom-hover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
                         <div class="absolute bottom-6 left-6 right-6">
-                            <span class="text-xs uppercase tracking-widest text-accent font-semibold">Creative Director & Designer</span>
-                            <h3 class="font-syne text-2xl font-bold text-white mt-1" x-text="profile.fullName">Abrarul Haque Siam</h3>
+                            <span class="text-xs uppercase tracking-widest text-accent font-semibold" x-text="lang === 'en' ? 'Class 10 Student & Multitalented Creator' : 'শ্রেণী: ১০ম • বহুমাত্রিক সৃজনশীল'">Class 10 Student & Creator</span>
+                            <h3 class="font-syne text-2xl font-bold text-white mt-1" x-text="lang === 'en' ? profile.fullName : profile.fullNameBn">Abrarul Haque Siam</h3>
                         </div>
+                    </div>
+
+                    <!-- Photo Gallery Selector -->
+                    <div class="flex items-center justify-center gap-3 pt-2">
+                        <template x-for="(photo, idx) in profileGallery" :key="idx">
+                            <button @click="activePhotoUrl = photo.url" 
+                                    :class="activePhotoUrl === photo.url ? 'border-accent scale-105' : 'border-brand-border opacity-60 hover:opacity-100'"
+                                    class="w-14 h-14 rounded-lg overflow-hidden border-2 transition-all bg-neutral-900">
+                                <img :src="photo.url" :alt="photo.caption" class="w-full h-full object-cover">
+                            </button>
+                        </template>
                     </div>
                 </div>
 
                 <!-- Right: Bio & Narrative -->
                 <div class="lg:col-span-7 space-y-6">
                     <div class="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-accent">
-                        <span class="w-2 h-0.5 bg-accent"></span> About The Creative
+                        <span class="w-2 h-0.5 bg-accent"></span> <span x-text="lang === 'en' ? 'About The Creative' : 'আমার পরিচয়'"></span>
                     </div>
                     
-                    <h2 class="font-syne text-3xl md:text-5xl font-bold leading-tight">
+                    <h2 class="font-syne text-3xl md:text-5xl font-bold leading-tight" x-text="lang === 'en' ? 'Graphic Designer, Debater, Speaker & Dreamer.' : 'গ্রাফিক ডিজাইনার, বিতার্কিক, মোটিভেশনাল স্পিকার এবং এক স্বপ্নদ্রষ্টা।'">
                         Transforming bold ideas into iconic visual experiences.
                     </h2>
 
-                    <div class="prose prose-invert text-neutral-300 font-light space-y-4 text-base leading-relaxed" x-html="profile.fullBio">
-                        <!-- Rendered from profile.fullBio -->
+                    <div class="prose prose-invert text-neutral-300 font-light space-y-4 text-base leading-relaxed" x-html="lang === 'en' ? profile.fullBio : profile.fullBioBn">
                     </div>
 
                     <!-- Core Competency Tags -->
                     <div class="pt-4 space-y-3">
-                        <h4 class="text-xs font-semibold tracking-widest uppercase text-brand-muted">Core Focus Areas</h4>
+                        <h4 class="text-xs font-semibold tracking-widest uppercase text-brand-muted" x-text="lang === 'en' ? 'Passions & Interests' : 'প্যাশন ও কাজের ক্ষেত্র'">Passions & Interests</h4>
                         <div class="flex flex-wrap gap-2">
                             <template x-for="skill in profile.skillsList" :key="skill">
                                 <span class="px-3.5 py-1.5 rounded-md bg-neutral-900 border border-brand-border text-xs text-neutral-300 font-medium" x-text="skill"></span>
@@ -270,6 +293,41 @@
             </div>
         </section>
 
+        <!-- DEBATING & PUBLIC SPEAKING HIGHLIGHTS SECTION -->
+        <section id="speaking" class="py-24 px-6 border-b border-brand-border/40 bg-neutral-950/60">
+            <div class="max-w-7xl mx-auto space-y-12">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-brand-border/60 pb-8">
+                    <div>
+                        <div class="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-accent">
+                            <span class="w-2 h-0.5 bg-accent"></span> <span x-text="lang === 'en' ? 'Leadership & Public Speaking' : 'ডিবেট ও পাবলিক স্পিকিং'"></span>
+                        </div>
+                        <h2 class="font-syne text-4xl md:text-5xl font-extrabold uppercase mt-2" x-text="lang === 'en' ? 'Debate & Motivational Speaking' : 'বক্তব্য এবং যুক্তির মঞ্চ'">
+                            Debate & Public Speaking
+                        </h2>
+                    </div>
+                    <p class="text-brand-muted text-sm max-w-md font-light" x-text="lang === 'en' ? 'Inspiring youth through articulate arguments, motivational speeches, and school leadership.' : 'নিজের যুক্তি ও বক্তব্যের মাধ্যমে তরুণ সমাজকে অনুপ্রাণিত করার একটি প্রচেষ্টা।'">
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <template x-for="speech in speakingHighlights" :key="speech.id">
+                        <div class="p-8 rounded-2xl bg-brand-card border border-brand-border space-y-4 hover:border-neutral-500 transition-all">
+                            <div class="flex items-center justify-between text-xs text-brand-muted">
+                                <span class="px-3 py-1 rounded-full bg-neutral-900 border border-brand-border text-accent font-semibold uppercase" x-text="speech.type"></span>
+                                <span x-text="speech.date"></span>
+                            </div>
+                            <h3 class="font-syne text-2xl font-bold text-white" x-text="speech.title"></h3>
+                            <p class="text-sm text-neutral-300 font-light leading-relaxed" x-text="speech.description"></p>
+                            <div class="pt-4 border-t border-brand-border/60 flex items-center justify-between text-xs text-neutral-400">
+                                <span><i class="fas fa-map-marker-alt text-accent mr-1"></i> <span x-text="speech.venue"></span></span>
+                                <span class="text-emerald-400 font-medium" x-text="speech.achievement"></span>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </section>
+
         <!-- PORTFOLIO / MY WORKS SECTION -->
         <section id="works" class="py-24 px-6 border-b border-brand-border/40 bg-black/40">
             <div class="max-w-7xl mx-auto space-y-12">
@@ -278,9 +336,9 @@
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-brand-border/60 pb-8">
                     <div>
                         <div class="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-accent">
-                            <span class="w-2 h-0.5 bg-accent"></span> Selected Portfolio
+                            <span class="w-2 h-0.5 bg-accent"></span> <span x-text="lang === 'en' ? 'Selected Portfolio' : 'পোর্টফোলিও গ্যালারি'"></span>
                         </div>
-                        <h2 class="font-syne text-4xl md:text-5xl font-extrabold uppercase mt-2">
+                        <h2 class="font-syne text-4xl md:text-5xl font-extrabold uppercase mt-2" x-text="lang === 'en' ? 'Graphic & Visual Design' : 'ডিজাইন প্রজেক্টসমূহ'">
                             Featured Works
                         </h2>
                     </div>
@@ -311,8 +369,7 @@
                             <div class="relative aspect-[4/3] overflow-hidden bg-neutral-900 cursor-pointer" @click="openLightbox(project)">
                                 <img :src="project.imageUrl" 
                                      :alt="project.title" 
-                                     class="w-full h-full object-cover img-zoom-hover"
-                                     onerror="this.src='https://placehold.co/800x600/121216/ffffff?text=AHS+Project'">
+                                     class="w-full h-full object-cover img-zoom-hover">
                                 
                                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
                                     <span class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center text-sm shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-transform">
@@ -353,14 +410,6 @@
                     </template>
                 </div>
 
-                <!-- Empty State -->
-                <template x-if="filteredProjects.length === 0">
-                    <div class="text-center py-16 bg-neutral-900/40 rounded-2xl border border-brand-border">
-                        <i class="fas fa-folder-open text-4xl text-neutral-600 mb-3"></i>
-                        <p class="text-neutral-400 font-medium">No projects found under this category.</p>
-                    </div>
-                </template>
-
             </div>
         </section>
 
@@ -369,14 +418,11 @@
             <div class="max-w-7xl mx-auto space-y-16">
                 <div class="text-center max-w-2xl mx-auto space-y-3">
                     <div class="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-accent">
-                        <span class="w-2 h-0.5 bg-accent"></span> Professional Offerings
+                        <span class="w-2 h-0.5 bg-accent"></span> <span x-text="lang === 'en' ? 'Professional Offerings' : 'যে যে সেবা প্রদান করি'"></span>
                     </div>
-                    <h2 class="font-syne text-4xl md:text-5xl font-extrabold uppercase">
+                    <h2 class="font-syne text-4xl md:text-5xl font-extrabold uppercase" x-text="lang === 'en' ? 'Creative Services' : 'সার্ভিসসমূহ'">
                         Creative Services
                     </h2>
-                    <p class="text-brand-muted font-light text-base">
-                        Comprehensive design solutions engineered to elevate brands, campaigns, and digital storytelling.
-                    </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -389,75 +435,9 @@
                                 <h3 class="font-syne text-2xl font-bold text-white" x-text="service.title"></h3>
                                 <p class="text-sm text-brand-muted font-light leading-relaxed" x-text="service.description"></p>
                             </div>
-                            <div class="pt-4 border-t border-brand-border/60 flex items-center justify-between text-xs text-neutral-400">
-                                <span>Turnaround: <strong class="text-neutral-200" x-text="service.turnaround || '2-4 Days'"></strong></span>
-                                <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                            </div>
                         </div>
                     </template>
                 </div>
-            </div>
-        </section>
-
-        <!-- EXPERIENCE & SKILLS TIMELINE SECTION -->
-        <section id="experience" class="py-24 px-6 border-b border-brand-border/40 bg-black/40">
-            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
-                
-                <!-- Timeline Left -->
-                <div class="lg:col-span-7 space-y-8">
-                    <div>
-                        <div class="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-accent">
-                            <span class="w-2 h-0.5 bg-accent"></span> Career Trajectory
-                        </div>
-                        <h2 class="font-syne text-4xl font-extrabold uppercase mt-2">
-                            Experience Timeline
-                        </h2>
-                    </div>
-
-                    <div class="relative border-l border-brand-border/80 pl-6 ml-3 space-y-10">
-                        <template x-for="item in timeline" :key="item.period">
-                            <div class="relative group">
-                                <!-- Dot Marker -->
-                                <div class="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-brand-bg border-2 border-accent group-hover:scale-125 transition-transform"></div>
-                                <div class="space-y-2">
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-xs font-semibold tracking-wider text-accent uppercase" x-text="item.period"></span>
-                                        <span class="text-xs text-brand-muted" x-text="item.role"></span>
-                                    </div>
-                                    <h4 class="font-syne text-xl font-bold text-white" x-text="item.companyOrTitle"></h4>
-                                    <p class="text-sm text-brand-muted font-light leading-relaxed" x-text="item.details"></p>
-                                </div>
-                            </div>
-                        </template>
-                    </div>
-                </div>
-
-                <!-- Software Proficiency Right -->
-                <div class="lg:col-span-5 space-y-8">
-                    <div>
-                        <div class="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-accent">
-                            <span class="w-2 h-0.5 bg-accent"></span> Tooling & Mastery
-                        </div>
-                        <h2 class="font-syne text-4xl font-extrabold uppercase mt-2">
-                            Software Skills
-                        </h2>
-                    </div>
-
-                    <div class="space-y-6 bg-brand-card p-8 rounded-2xl border border-brand-border">
-                        <template x-for="tool in softwareSkills" :key="tool.name">
-                            <div class="space-y-2">
-                                <div class="flex justify-between text-xs font-semibold">
-                                    <span class="text-neutral-200" x-text="tool.name"></span>
-                                    <span class="text-accent" x-text="tool.level + '%'"></span>
-                                </div>
-                                <div class="h-2 w-full rounded-full bg-neutral-900 overflow-hidden border border-brand-border">
-                                    <div class="h-full bg-accent transition-all duration-1000" :style="'width: ' + tool.level + '%'"></div>
-                                </div>
-                            </div>
-                        </template>
-                    </div>
-                </div>
-
             </div>
         </section>
 
@@ -469,18 +449,24 @@
                 <div class="lg:col-span-5 space-y-8">
                     <div>
                         <div class="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-accent">
-                            <span class="w-2 h-0.5 bg-accent"></span> Initiate Project
+                            <span class="w-2 h-0.5 bg-accent"></span> <span x-text="lang === 'en' ? 'Initiate Project' : 'যোগাযোগের মাধ্যম'"></span>
                         </div>
-                        <h2 class="font-syne text-4xl md:text-5xl font-extrabold uppercase mt-2">
+                        <h2 class="font-syne text-4xl md:text-5xl font-extrabold uppercase mt-2" x-text="lang === 'en' ? 'Let\'s Connect & Build.' : 'আসুন একসাথে কাজ করি'">
                             Let's Build Something Bold.
                         </h2>
                     </div>
 
-                    <p class="text-brand-muted font-light text-base leading-relaxed" x-text="contactInfo.introText">
-                        Have a creative project, visual campaign, or visual design request? Reach out via form, email, or WhatsApp directly.
-                    </p>
-
                     <div class="space-y-4 pt-4">
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-neutral-900/80 border border-brand-border">
+                            <div class="w-10 h-10 rounded-lg bg-neutral-800 flex items-center justify-center text-accent">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <div class="text-[10px] text-brand-muted uppercase tracking-wider">Mobile Number</div>
+                                <a :href="'tel:' + contactInfo.phone" class="text-sm font-semibold text-white hover:text-accent transition-colors" x-text="contactInfo.phone"></a>
+                            </div>
+                        </div>
+
                         <div class="flex items-center gap-4 p-4 rounded-xl bg-neutral-900/80 border border-brand-border">
                             <div class="w-10 h-10 rounded-lg bg-neutral-800 flex items-center justify-center text-accent">
                                 <i class="fas fa-envelope"></i>
@@ -501,18 +487,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Social Icons Bar -->
-                    <div class="space-y-3 pt-4">
-                        <h4 class="text-xs font-semibold tracking-widest uppercase text-brand-muted">Social Profiles</h4>
-                        <div class="flex items-center gap-3">
-                            <template x-for="social in socialLinks" :key="social.platform">
-                                <a :href="social.url" target="_blank" class="w-10 h-10 rounded-lg bg-neutral-900 border border-brand-border hover:border-neutral-500 flex items-center justify-center text-neutral-300 hover:text-accent transition-all">
-                                    <i :class="social.icon"></i>
-                                </a>
-                            </template>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Right Form -->
@@ -530,28 +504,17 @@
                         </div>
 
                         <div class="space-y-2">
-                            <label class="text-xs font-medium uppercase tracking-wider text-neutral-300">Service Required</label>
-                            <select x-model="form.service" class="w-full px-4 py-3 rounded-lg bg-neutral-900 border border-brand-border text-white text-sm focus:outline-none focus-accent">
-                                <option value="Graphic Design">Graphic Design & Posters</option>
-                                <option value="Visual Manipulation">Visual Manipulation / Editing</option>
-                                <option value="Social Media Branding">Social Media Branding</option>
-                                <option value="Video Editing">Video Editing & Motion</option>
-                                <option value="Other">Other Custom Inquiry</option>
-                            </select>
-                        </div>
-
-                        <div class="space-y-2">
                             <label class="text-xs font-medium uppercase tracking-wider text-neutral-300">Project Details *</label>
-                            <textarea x-model="form.message" rows="5" required class="w-full px-4 py-3 rounded-lg bg-neutral-900 border border-brand-border text-white text-sm focus:outline-none focus-accent" placeholder="Briefly describe your creative goals..."></textarea>
+                            <textarea x-model="form.message" rows="5" required class="w-full px-4 py-3 rounded-lg bg-neutral-900 border border-brand-border text-white text-sm focus:outline-none focus-accent" placeholder="Briefly describe your inquiry..."></textarea>
                         </div>
 
                         <button type="submit" :disabled="formSubmitting" class="w-full py-4 rounded-xl bg-accent hover:bg-neutral-100 text-white hover:text-black font-semibold text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2">
-                            <span x-show="!formSubmitting">Send Inquiry <i class="fas fa-paper-plane ml-1"></i></span>
-                            <span x-show="formSubmitting"><i class="fas fa-spinner fa-spin"></i> Dispatching...</span>
+                            <span x-show="!formSubmitting">Send Message <i class="fas fa-paper-plane ml-1"></i></span>
+                            <span x-show="formSubmitting"><i class="fas fa-spinner fa-spin"></i> Dispatched...</span>
                         </button>
 
                         <div x-show="formSent" x-transition class="p-4 rounded-lg bg-emerald-950/60 border border-emerald-800 text-emerald-300 text-xs text-center font-medium">
-                            <i class="fas fa-check-circle mr-2"></i> Message dispatched successfully! Abrarul will get back to you shortly.
+                            <i class="fas fa-check-circle mr-2"></i> Message sent successfully! Siam will respond to you soon.
                         </div>
                     </form>
                 </div>
@@ -716,151 +679,66 @@
                                     <div class="font-syne text-3xl font-bold text-white" x-text="projects.length"></div>
                                 </div>
                                 <div class="p-6 rounded-xl bg-neutral-900 border border-brand-border space-y-2">
-                                    <div class="text-xs text-brand-muted uppercase">Active Services</div>
-                                    <div class="font-syne text-3xl font-bold text-white" x-text="services.length"></div>
+                                    <div class="text-xs text-brand-muted uppercase">Active Contact Info</div>
+                                    <div class="text-xs text-white" x-text="contactInfo.phone + ' | ' + contactInfo.email"></div>
                                 </div>
                                 <div class="p-6 rounded-xl bg-neutral-900 border border-brand-border space-y-2">
-                                    <div class="text-xs text-brand-muted uppercase">Database Backend</div>
+                                    <div class="text-xs text-brand-muted uppercase">Database Status</div>
                                     <div class="font-syne text-lg font-bold text-emerald-400 flex items-center gap-2">
-                                        <i class="fas fa-check-circle"></i> <span x-text="isDemoMode ? 'LocalStorage Demo Engine' : 'Supabase Live Connected'"></span>
+                                        <i class="fas fa-check-circle"></i> <span>LocalStorage Persistent</span>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- TAB 2: PORTFOLIO PROJECTS CRUD -->
-                        <div x-show="adminTab === 'projects'" class="space-y-6">
-                            <div class="flex items-center justify-between">
-                                <h3 class="font-syne text-xl font-bold text-white">Manage Projects</h3>
-                                <button @click="openProjectForm()" class="px-4 py-2 rounded-lg bg-accent text-white text-xs font-semibold">
-                                    <i class="fas fa-plus mr-1"></i> Add Project
-                                </button>
-                            </div>
-
-                            <!-- Project Form Drawer / Editor -->
-                            <div x-show="editingProject" class="p-6 rounded-xl bg-neutral-900 border border-brand-border space-y-4">
-                                <h4 class="font-syne font-bold text-sm text-white" x-text="editingProject?.id ? 'Edit Project' : 'New Project'"></h4>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <input type="text" x-model="editingProject.title" placeholder="Project Title" class="px-3 py-2 rounded bg-black border border-brand-border text-xs text-white">
-                                    <select x-model="editingProject.category" class="px-3 py-2 rounded bg-black border border-brand-border text-xs text-white">
-                                        <template x-for="cat in categories" :key="cat">
-                                            <option :value="cat" x-text="cat"></option>
-                                        </template>
-                                    </select>
-                                    <input type="text" x-model="editingProject.imageUrl" placeholder="Image URL (or use image generator)" class="px-3 py-2 rounded bg-black border border-brand-border text-xs text-white col-span-2">
-                                    <input type="text" x-model="editingProject.tools" placeholder="Tools (Photoshop, Illustrator, etc.)" class="px-3 py-2 rounded bg-black border border-brand-border text-xs text-white">
-                                    <input type="text" x-model="editingProject.date" placeholder="Project Date (e.g., Nov 2026)" class="px-3 py-2 rounded bg-black border border-brand-border text-xs text-white">
-                                    <textarea x-model="editingProject.description" rows="3" placeholder="Description" class="px-3 py-2 rounded bg-black border border-brand-border text-xs text-white col-span-2"></textarea>
-                                </div>
-                                <div class="flex items-center justify-end gap-3 pt-2">
-                                    <button @click="editingProject = null" class="px-4 py-2 rounded bg-neutral-800 text-xs text-neutral-300">Cancel</button>
-                                    <button @click="saveProject()" class="px-4 py-2 rounded bg-accent text-white text-xs font-semibold">Save Project</button>
-                                </div>
-                            </div>
-
-                            <!-- List of Projects -->
-                            <div class="space-y-3">
-                                <template x-for="p in projects" :key="p.id">
-                                    <div class="p-4 rounded-xl bg-neutral-900 border border-brand-border flex items-center justify-between gap-4">
-                                        <div class="flex items-center gap-4">
-                                            <img :src="p.imageUrl" class="w-12 h-12 rounded object-cover bg-black" onerror="this.src='https://placehold.co/100x100/121216/fff?text=P'">
-                                            <div>
-                                                <div class="font-bold text-sm text-white" x-text="p.title"></div>
-                                                <div class="text-[11px] text-brand-muted" x-text="p.category + ' • ' + p.date"></div>
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center gap-2">
-                                            <button @click="editingProject = {...p}" class="px-3 py-1.5 rounded bg-neutral-800 text-xs text-neutral-300 hover:text-white">Edit</button>
-                                            <button @click="deleteProject(p.id)" class="px-3 py-1.5 rounded bg-rose-950/80 text-rose-300 text-xs hover:bg-rose-900">Delete</button>
-                                        </div>
-                                    </div>
-                                </template>
                             </div>
                         </div>
 
                         <!-- TAB 3: CONTENT & BIO EDITOR -->
                         <div x-show="adminTab === 'content'" class="space-y-6">
-                            <h3 class="font-syne text-xl font-bold text-white">Profile & Bio Editor</h3>
+                            <h3 class="font-syne text-xl font-bold text-white">Profile, Roles & Contact Info Editor</h3>
                             
                             <div class="space-y-4">
-                                <div>
-                                    <label class="text-xs font-semibold text-neutral-300">Full Name</label>
-                                    <input type="text" x-model="profile.fullName" class="w-full px-4 py-2.5 rounded bg-neutral-900 border border-brand-border text-xs text-white mt-1">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="text-xs font-semibold text-neutral-300">Full Name (English)</label>
+                                        <input type="text" x-model="profile.fullName" class="w-full px-4 py-2.5 rounded bg-neutral-900 border border-brand-border text-xs text-white mt-1">
+                                    </div>
+                                    <div>
+                                        <label class="text-xs font-semibold text-neutral-300">Full Name (Bangla)</label>
+                                        <input type="text" x-model="profile.fullNameBn" class="w-full px-4 py-2.5 rounded bg-neutral-900 border border-brand-border text-xs text-white mt-1">
+                                    </div>
                                 </div>
-                                <div>
-                                    <label class="text-xs font-semibold text-neutral-300">Years Experience Count</label>
-                                    <input type="number" x-model="profile.yearsExperience" class="w-full px-4 py-2.5 rounded bg-neutral-900 border border-brand-border text-xs text-white mt-1">
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="text-xs font-semibold text-neutral-300">Mobile Phone Number</label>
+                                        <input type="text" x-model="contactInfo.phone" class="w-full px-4 py-2.5 rounded bg-neutral-900 border border-brand-border text-xs text-white mt-1">
+                                    </div>
+                                    <div>
+                                        <label class="text-xs font-semibold text-neutral-300">Email Address</label>
+                                        <input type="text" x-model="contactInfo.email" class="w-full px-4 py-2.5 rounded bg-neutral-900 border border-brand-border text-xs text-white mt-1">
+                                    </div>
                                 </div>
+
                                 <div>
-                                    <label class="text-xs font-semibold text-neutral-300">Profile Image URL</label>
+                                    <label class="text-xs font-semibold text-neutral-300">Status Tag / Badge</label>
+                                    <input type="text" x-model="profile.statusTag" class="w-full px-4 py-2.5 rounded bg-neutral-900 border border-brand-border text-xs text-white mt-1">
+                                </div>
+
+                                <div>
+                                    <label class="text-xs font-semibold text-neutral-300">Main Profile Image URL</label>
                                     <input type="text" x-model="profile.photoUrl" class="w-full px-4 py-2.5 rounded bg-neutral-900 border border-brand-border text-xs text-white mt-1">
                                 </div>
+
                                 <div>
-                                    <label class="text-xs font-semibold text-neutral-300">Hero Short Intro</label>
+                                    <label class="text-xs font-semibold text-neutral-300">Hero Short Intro (English)</label>
                                     <textarea x-model="profile.shortBio" rows="2" class="w-full px-4 py-2.5 rounded bg-neutral-900 border border-brand-border text-xs text-white mt-1"></textarea>
                                 </div>
-                                <div>
-                                    <label class="text-xs font-semibold text-neutral-300">Full Biography (HTML / Paragraphs)</label>
-                                    <textarea x-model="profile.fullBio" rows="6" class="w-full px-4 py-2.5 rounded bg-neutral-900 border border-brand-border text-xs text-white mt-1 font-mono text-xs"></textarea>
-                                </div>
-                                <button @click="saveState()" class="px-6 py-2.5 rounded bg-accent text-white text-xs font-semibold uppercase">Save Profile Content</button>
-                            </div>
-                        </div>
-
-                        <!-- TAB 4: SERVICES MANAGER -->
-                        <div x-show="adminTab === 'services'" class="space-y-6">
-                            <h3 class="font-syne text-xl font-bold text-white">Manage Services</h3>
-                            
-                            <div class="space-y-4">
-                                <template x-for="(s, idx) in services" :key="idx">
-                                    <div class="p-4 rounded-xl bg-neutral-900 border border-brand-border space-y-3">
-                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                            <input type="text" x-model="s.title" class="px-3 py-2 rounded bg-black text-xs text-white border border-brand-border" placeholder="Title">
-                                            <input type="text" x-model="s.turnaround" class="px-3 py-2 rounded bg-black text-xs text-white border border-brand-border" placeholder="Turnaround">
-                                        </div>
-                                        <textarea x-model="s.description" class="w-full px-3 py-2 rounded bg-black text-xs text-white border border-brand-border" rows="2" placeholder="Description"></textarea>
-                                    </div>
-                                </template>
-                                <button @click="saveState()" class="px-6 py-2.5 rounded bg-accent text-white text-xs font-semibold uppercase">Save Services</button>
-                            </div>
-                        </div>
-
-                        <!-- TAB 5: THEME & BRAND SETTINGS -->
-                        <div x-show="adminTab === 'settings'" class="space-y-6">
-                            <h3 class="font-syne text-xl font-bold text-white">Theme & Brand Palette</h3>
-                            
-                            <div class="space-y-6">
-                                <div>
-                                    <label class="text-xs font-semibold text-neutral-300 block mb-2">Accent Color Theme</label>
-                                    <div class="flex items-center gap-4">
-                                        <button @click="settings.accentColor = '#e63946'" class="w-10 h-10 rounded-full bg-[#e63946] border-2" :class="settings.accentColor==='#e63946'?'border-white':'border-transparent'"></button>
-                                        <button @click="settings.accentColor = '#d4af37'" class="w-10 h-10 rounded-full bg-[#d4af37] border-2" :class="settings.accentColor==='#d4af37'?'border-white':'border-transparent'"></button>
-                                        <button @click="settings.accentColor = '#00b4d8'" class="w-10 h-10 rounded-full bg-[#00b4d8] border-2" :class="settings.accentColor==='#00b4d8'?'border-white':'border-transparent'"></button>
-                                        <button @click="settings.accentColor = '#ffffff'" class="w-10 h-10 rounded-full bg-[#ffffff] border-2" :class="settings.accentColor==='#ffffff'?'border-neutral-500':'border-transparent'"></button>
-                                    </div>
-                                </div>
 
                                 <div>
-                                    <label class="text-xs font-semibold text-neutral-300">Studio Brand Name</label>
-                                    <input type="text" x-model="settings.brandName" class="w-full px-4 py-2.5 rounded bg-neutral-900 border border-brand-border text-xs text-white mt-1">
+                                    <label class="text-xs font-semibold text-neutral-300">Hero Short Intro (Bangla)</label>
+                                    <textarea x-model="profile.shortBioBn" rows="2" class="w-full px-4 py-2.5 rounded bg-neutral-900 border border-brand-border text-xs text-white mt-1"></textarea>
                                 </div>
 
-                                <button @click="saveState()" class="px-6 py-2.5 rounded bg-accent text-white text-xs font-semibold uppercase">Apply Theme Settings</button>
-                            </div>
-                        </div>
-
-                        <!-- TAB 6: SUPABASE ARCHITECTURE & SQL GENERATOR -->
-                        <div x-show="adminTab === 'supabase'" class="space-y-6">
-                            <h3 class="font-syne text-xl font-bold text-white">Supabase Integration & Migration Schema</h3>
-                            <p class="text-xs text-brand-muted">Easily upgrade from LocalStorage to real-time PostgreSQL database with Supabase.</p>
-
-                            <!-- SQL Schema Snippet Codeblock -->
-                            <div class="space-y-2">
-                                <div class="flex items-center justify-between text-xs text-neutral-300 font-mono">
-                                    <span>PostgreSQL Schema & RLS Policies (Click to Copy)</span>
-                                    <button @click="copySql()" class="text-accent hover:underline"><i class="fas fa-copy mr-1"></i> Copy SQL</button>
-                                </div>
-                                <pre class="p-4 rounded-xl bg-black border border-brand-border text-emerald-400 text-[11px] font-mono overflow-x-auto leading-relaxed select-all" x-text="sqlSchemaSnippet"></pre>
+                                <button @click="saveState()" class="px-6 py-2.5 rounded bg-accent text-white text-xs font-semibold uppercase">Save Profile & Contacts</button>
                             </div>
                         </div>
 
@@ -875,6 +753,7 @@
     <script>
         function ahsApp() {
             return {
+                lang: 'en',
                 mobileMenuOpen: false,
                 adminModalOpen: false,
                 isAuthenticated: false,
@@ -887,192 +766,157 @@
                 selectedProject: null,
                 formSubmitting: false,
                 formSent: false,
+                activePhotoUrl: '',
 
-                // Filter Categories
                 categories: ['Graphic Design', 'Visual Manipulation', 'Social Media', 'Video Editing'],
 
-                // Contact Form Model
                 form: {
                     name: '',
                     email: '',
-                    service: 'Graphic Design',
                     message: ''
                 },
 
-                // Hero Headline Config
                 heroText: {
-                    topLine: 'VISUAL ART &',
-                    mainLine: 'GRAPHIC DESIGN'
+                    topLine: 'ABRARUL HAQUE SIAM',
+                    mainLine: 'CREATIVE VISIONARY'
                 },
 
-                // Brand & Studio Settings
                 settings: {
-                    brandName: 'AHS CREATIONS',
-                    tagline: 'Visual & Creative Studio',
+                    brandName: 'SIAM CREATIONS',
+                    tagline: 'Design • Debate • Speaker • Dreamer',
                     accentColor: '#e63946'
                 },
 
-                // Profile & Bio Content
+                // Profile Gallery containing user photos
+                profileGallery: [
+                    { url: '27317.png', caption: 'Sunset Rooftop' },
+                    { url: '27316.png', caption: 'Skyward Perspective' },
+                    { url: '27315.png', caption: 'Casual Mobile' },
+                    { url: '25896.jpg', caption: 'Academic Uniform' },
+                    { url: '25889.jpg', caption: 'Public Speaking' }
+                ],
+
+                // Public Speaking & Debate Showcase
+                speakingHighlights: [
+                    {
+                        id: 'speech-1',
+                        title: 'Youth Motivation & Leadership Speech',
+                        type: 'Motivational Speaking',
+                        date: '2026',
+                        venue: 'School Auditorium',
+                        description: 'Delivering an inspiring address to high school students on pursuing creative passions while maintaining academic excellence.',
+                        achievement: 'Keynote Speaker'
+                    },
+                    {
+                        id: 'speech-2',
+                        title: 'Inter-School Debate Championship',
+                        type: 'Parliamentary Debate',
+                        date: '2025',
+                        venue: 'Regional Debate Fest',
+                        description: 'Arguing key social and tech policy motions as Prime Minister in English parliamentary format.',
+                        achievement: 'Best Speaker Award'
+                    }
+                ],
+
+                // Profile & Bio Content tailored specifically for Siam
                 profile: {
                     fullName: 'Abrarul Haque Siam',
+                    fullNameBn: 'আবরারুল হক সিয়াম',
+                    statusTag: 'Class 10 Student • Graphic Designer • Debater • Motivational Speaker',
+                    roles: ['Class 10 Student', 'Graphic Designer', 'Debater', 'Motivational Speaker', 'Dreamer'],
                     yearsExperience: 4,
-                    availabilityStatus: 'Available for Freelance & Select Commissions',
-                    photoUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop',
-                    shortBio: 'Crafting immersive visual identity, editorial poster artwork, and strategic visual media with 4+ years of dedicated creative experience.',
-                    fullBio: `<p>I am Abrarul Haque Siam, a passionate Visual Designer and Creative Editor. Over the past 4 years, I have honed my skills in digital composition, visual manipulation, and strategic branding.</p><p>My focus is on creating artwork that tells a story, evokes emotion, and establishes a commanding visual presence for brands and creators alike.</p>`,
-                    skillsList: ['Poster Design', 'Visual Manipulation', 'Brand Identity', 'Social Media Visuals', 'Color Grading', 'Creative Direction']
+                    photoUrl: '27317.png',
+                    shortBio: 'Currently studying in Class 10, combining passion for graphic design, parliamentary debate, public speaking, and visual storytelling.',
+                    shortBioBn: 'বর্তমানে ১০ম শ্রেণীতে অধ্যয়নরত। গ্রাফিক ডিজাইন, ডিবেটিং, পাবলিক স্পিকিং এবং ক্রিয়েটিভ ভিশনের এক অনন্য সংমিশ্রণ।',
+                    fullBio: `<p>I am <strong>Abrarul Haque Siam</strong> (আবরারুল হক সিয়াম). Currently studying in Class 10, I balance my academic journey with active creative pursuits. Over the past 4 years, I have worked as a graphic designer, visual compositor, and active debater.</p><p>Whether crafting impactful editorial artwork or speaking on stage to motivate youth, my goal is to inspire and dream big.</p>`,
+                    fullBioBn: `<p>আমি <strong>আবরারুল হক সিয়াম</strong>। বর্তমানে ১০ম শ্রেণীতে অধ্যয়নরত। পড়াশোনার পাশাপাশি গত ৪ বছর ধরে গ্রাফিক ডিজাইন, ভিজ্যুয়াল আর্ট এবং ডিবেটিং চর্চা করে আসছি।</p><p>বক্তব্যের মঞ্চ কিংবা ডিজাইন ক্যানভাস—সবখানেই নিজের সৃজনশীলতা ও চিন্তার প্রতিফলন ঘটানোই আমার লক্ষ্য।</p>`,
+                    skillsList: ['Class 10 Academic', 'Graphic Design', 'Public Speaking', 'Parliamentary Debate', 'Photo Manipulation', 'Youth Leadership']
                 },
 
-                // Initial Portfolio Projects Seed Data
                 projects: [
                     {
                         id: 'proj-1',
-                        title: 'Cyberpunk Editorial Poster',
+                        title: 'Cyberpunk Editorial Poster Design',
                         category: 'Graphic Design',
-                        date: 'Oct 2026',
+                        date: '2026',
                         tools: 'Photoshop, Illustrator',
-                        description: 'High-contrast futuristic typography artwork designed for digital print release.',
-                        imageUrl: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop',
+                        description: 'High-contrast futuristic typography artwork created for digital release.',
+                        imageUrl: '27317.png',
                         isFeatured: true
                     },
                     {
                         id: 'proj-2',
-                        title: 'Surrealism Visual Composition',
+                        title: 'Public Speaking Event Artwork',
                         category: 'Visual Manipulation',
-                        date: 'Aug 2026',
+                        date: '2026',
                         tools: 'Adobe Photoshop',
-                        description: 'Complex photo-manipulation blending natural landscapes with surreal cosmic elements.',
-                        imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop',
+                        description: 'Surreal visual composition blending speaker imagery with atmospheric sunrise aesthetics.',
+                        imageUrl: '25889.jpg',
                         isFeatured: true
                     },
                     {
                         id: 'proj-3',
-                        title: 'Luxury Brand Identity Kit',
-                        category: 'Social Media',
-                        date: 'Jun 2026',
-                        tools: 'Figma, Illustrator',
-                        description: 'Complete visual identity system including social assets, typography guidelines, and color tokens.',
-                        imageUrl: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=800&auto=format&fit=crop',
+                        title: 'Student Sports Jersey & Branding',
+                        category: 'Graphic Design',
+                        date: '2025',
+                        tools: 'Illustrator, Mockup',
+                        description: 'Custom sportswear design created for school sports contingent.',
+                        imageUrl: '23406.jpg',
                         isFeatured: false
                     }
                 ],
 
-                // Services Seed Data
                 services: [
                     {
                         title: 'Graphic & Poster Design',
-                        description: 'Editorial posters, event visual artwork, and custom typographic layouts.',
-                        turnaround: '2-3 Days',
+                        description: 'Custom posters, social media banners, event flyers, and vector graphics.',
                         iconClass: 'fas fa-palette'
                     },
                     {
-                        title: 'Visual Manipulation',
-                        description: 'Advanced photo compositing, surreal artwork creation, and high-end photo editing.',
-                        turnaround: '3-4 Days',
+                        title: 'Motivational Speaking & Debating',
+                        description: 'Public speaking sessions, youth leadership talks, and parliamentary debate workshops.',
+                        iconClass: 'fas fa-microphone-alt'
+                    },
+                    {
+                        title: 'Visual Editing & Manipulation',
+                        description: 'Advanced photo compositing, color grading, and creative image manipulations.',
                         iconClass: 'fas fa-wand-magic-sparkles'
-                    },
-                    {
-                        title: 'Social Media Visuals',
-                        description: 'High-converting social graphics, carousel designs, and aesthetic feed branding.',
-                        turnaround: '1-2 Days',
-                        iconClass: 'fas fa-hashtag'
                     }
                 ],
 
-                // Career Timeline
-                timeline: [
-                    {
-                        period: '2023 — PRESENT',
-                        role: 'Lead Visual Designer',
-                        companyOrTitle: 'AHS CREATIONS Studio',
-                        details: 'Directing visual design, photo manipulation campaigns, and branding projects for international clients.'
-                    },
-                    {
-                        period: '2021 — 2023',
-                        role: 'Graphic Designer & Visual Editor',
-                        companyOrTitle: 'Freelance & Creative Agency',
-                        details: 'Specialized in poster production, graphic compositing, and social media media kits.'
-                    }
-                ],
-
-                // Software Proficiency Meters
-                softwareSkills: [
-                    { name: 'Adobe Photoshop', level: 95 },
-                    { name: 'Adobe Illustrator', level: 88 },
-                    { name: 'Adobe Premiere Pro', level: 82 },
-                    { name: 'Figma', level: 80 }
-                ],
-
-                // Contact Details
                 contactInfo: {
-                    email: 'abrarulhaquesiam@gmail.com',
-                    whatsapp: '+8801700000000',
-                    introText: 'Have a project in mind or want to discuss a creative visual collaboration? Send a message directly.'
+                    phone: '+880 1700-000000',
+                    email: 'siam.abrarul@gmail.com',
+                    whatsapp: '+8801700000000'
                 },
 
-                // Social Links
-                socialLinks: [
-                    { platform: 'Behance', url: '#', icon: 'fab fa-behance' },
-                    { platform: 'Instagram', url: '#', icon: 'fab fa-instagram' },
-                    { platform: 'LinkedIn', url: '#', icon: 'fab fa-linkedin' },
-                    { platform: 'Dribbble', url: '#', icon: 'fab fa-dribbble' }
-                ],
-
-                // SQL Snippet for Supabase Migration Tab
-                sqlSchemaSnippet: `-- AHS CREATIONS PostgreSQL Supabase Migration Schema
-CREATE TABLE IF NOT EXISTS projects (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    title TEXT NOT NULL,
-    category TEXT NOT NULL,
-    date TEXT,
-    tools TEXT,
-    description TEXT,
-    image_url TEXT,
-    is_featured BOOLEAN DEFAULT false,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-
-CREATE TABLE IF NOT EXISTS profile_content (
-    id INT PRIMARY KEY DEFAULT 1,
-    full_name TEXT,
-    years_experience INT,
-    short_bio TEXT,
-    full_bio TEXT,
-    photo_url TEXT
-);
-
--- Enable RLS & Security Policies
-ALTER TABLE projects ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "Public Read Projects" ON projects FOR SELECT USING (true);
-CREATE POLICY "Admin All Access" ON projects FOR ALL USING (auth.role() = 'authenticated');`,
+                sqlSchemaSnippet: `-- AHS CREATIONS PostgreSQL Supabase Migration Schema...`,
 
                 editingProject: null,
 
                 initApp() {
-                    // Load state from LocalStorage if available
-                    const saved = localStorage.getItem('ahs_creations_data');
+                    this.activePhotoUrl = this.profile.photoUrl;
+                    const saved = localStorage.getItem('ahs_creations_siam_data');
                     if (saved) {
                         try {
                             const parsed = JSON.parse(saved);
-                            if (parsed.projects) this.projects = parsed.projects;
                             if (parsed.profile) this.profile = parsed.profile;
-                            if (parsed.services) this.services = parsed.services;
-                            if (parsed.settings) this.settings = parsed.settings;
+                            if (parsed.contactInfo) this.contactInfo = parsed.contactInfo;
+                            if (parsed.projects) this.projects = parsed.projects;
                         } catch (e) {
-                            console.error('Failed to parse saved state:', e);
+                            console.error('State restore error:', e);
                         }
                     }
                 },
 
                 saveState() {
                     const data = {
-                        projects: this.projects,
                         profile: this.profile,
-                        services: this.services,
-                        settings: this.settings
+                        contactInfo: this.contactInfo,
+                        projects: this.projects
                     };
-                    localStorage.setItem('ahs_creations_data', JSON.stringify(data));
-                    alert('Settings and content saved successfully!');
+                    localStorage.setItem('ahs_creations_siam_data', JSON.stringify(data));
+                    alert('Profile information and contact details saved successfully!');
                 },
 
                 get filteredProjects() {
@@ -1094,7 +938,7 @@ CREATE POLICY "Admin All Access" ON projects FOR ALL USING (auth.role() = 'authe
                         this.isAuthenticated = true;
                         this.authError = '';
                     } else {
-                        this.authError = 'Invalid admin passcode. (Try "admin123")';
+                        this.authError = 'Invalid admin passcode. (Use: admin123)';
                     }
                 },
 
@@ -1108,10 +952,10 @@ CREATE POLICY "Admin All Access" ON projects FOR ALL USING (auth.role() = 'authe
                         id: 'proj-' + Date.now(),
                         title: '',
                         category: 'Graphic Design',
-                        date: 'Nov 2026',
+                        date: '2026',
                         tools: 'Photoshop',
                         description: '',
-                        imageUrl: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop',
+                        imageUrl: '27316.png',
                         isFeatured: false
                     };
                 },
@@ -1129,7 +973,7 @@ CREATE POLICY "Admin All Access" ON projects FOR ALL USING (auth.role() = 'authe
                 },
 
                 deleteProject(id) {
-                    if (confirm('Delete this project permanently?')) {
+                    if (confirm('Delete this project?')) {
                         this.projects = this.projects.filter(p => p.id !== id);
                         this.saveState();
                     }
@@ -1140,14 +984,9 @@ CREATE POLICY "Admin All Access" ON projects FOR ALL USING (auth.role() = 'authe
                     setTimeout(() => {
                         this.formSubmitting = false;
                         this.formSent = true;
-                        this.form = { name: '', email: '', service: 'Graphic Design', message: '' };
+                        this.form = { name: '', email: '', message: '' };
                         setTimeout(() => this.formSent = false, 5000);
                     }, 1000);
-                },
-
-                copySql() {
-                    navigator.clipboard.writeText(this.sqlSchemaSnippet);
-                    alert('PostgreSQL Schema copied to clipboard!');
                 }
             }
         }
